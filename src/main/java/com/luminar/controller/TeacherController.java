@@ -16,6 +16,8 @@ public class TeacherController {
 		@Autowired
 		TeacherService teacherService;
 		
+		/*Teachers List*/
+		
 		@GetMapping("/")
 		public ModelAndView getAllTeachers() {
 			ModelAndView mav = new ModelAndView("index");
@@ -28,4 +30,15 @@ public class TeacherController {
 		 * In Model and View ,it holds both the jsp file name and the object to sent.
 		 * MAV is older SpringBoot.Model+ String is the newer one and reduces code.
 		 */
+		
+		/*Add Teacher*/
+		
+		@GetMapping("/add-teacher")
+		public ModelAndView addTeacher() {
+			ModelAndView mav = new ModelAndView("add_teacher");
+			mav.addObject("command", new Teacher());   //command is available by MAV by default.we set it with an empty teacher object
+			return mav;
+		}
+		
+		
 }
