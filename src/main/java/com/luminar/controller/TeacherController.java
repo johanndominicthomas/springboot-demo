@@ -69,5 +69,12 @@ public class TeacherController {
 		 * clicking submit sends post request to save/update teacher (/save-teacher).
 		 */
 		
+		@GetMapping("teacher-delete/{id}")
+		public String deleteStaff(@PathVariable("id") Long id) {
+			Teacher deleteTeacher = teacherService.getTeacherById(id);
+			teacherService.deleteTeacher(deleteTeacher);
+			return "redirect:/";
+		}
+		
 		
 }
