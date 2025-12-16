@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,5 +50,24 @@ public class TeacherController {
 			teacherService.saveTeacher(teacher);
 			return "redirect:/";
 		}
+		
+		/*Edit Teacher*/
+		
+		@GetMapping("/teacher-update/{id}")
+		public ModelAndView getStaff(@PathVariable("id") Long id) {
+			ModelAndView mav = new ModelAndView("add_teacher");
+			Teacher teacher = teacherService.getTeacherById(id);
+			mav.addObject("command", teacher);
+			return mav;
+		}
+		
+		/*
+		 * When Edit is clicked > get request along with id.
+		 * Fetch Teacher Object using id and allocate to teacher
+		 * Set Teacher object to command in mav.
+		 * add_teacher.jsp is rendered with the values in teacher object.
+		 * clicking submit sends post request to save/update teacher (/save-teacher).
+		 */
+		
 		
 }
