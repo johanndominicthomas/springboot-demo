@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<a href=/add-teacher">Add Teacher</a>
+		<a href="/add-teacher">Add Teacher</a>
 		<br>
 		
 		<c:if test="${teachers.size()==0 }">
